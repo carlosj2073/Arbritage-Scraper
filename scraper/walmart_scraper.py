@@ -46,7 +46,7 @@ class WalmartScraper:
 
                 results.append({
                     "listing" : listing,
-                    "price" : self.parse_price(price_raw),
+                    "price" : WalmartScraper.parse_price(price_raw),
                     "url" : url,
                     "image" : image,
                     "brand" : None  
@@ -57,7 +57,8 @@ class WalmartScraper:
         
         return results
     
-    def parse_price(self, price_raw : str) -> Decimal:
+    @staticmethod
+    def parse_price(price_raw : str) -> Decimal:
         digits = ''.join(filter(str.isdigit, price_raw))
         return Decimal(digits) / Decimal(100)
 
