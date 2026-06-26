@@ -7,7 +7,7 @@ from decimal import Decimal
 
 class WalmartScraper:
 
-    website = "Walmart"
+    website = "walmart"
 
     def __init__(self, url: str, logger: logging.Logger) -> None:
         self.url = url
@@ -18,6 +18,7 @@ class WalmartScraper:
        
 
     def launch(self) -> None:
+
         self.logger.info(f"Initiating playwright and launching {self.website}.com")
 
         self.playwright = sync_playwright().start()
@@ -65,8 +66,11 @@ class WalmartScraper:
      
 if __name__ == "__main__":
     logger = get_logger("walmart")
-    scraper = WalmartScraper(url="https://www.walmart.com/search?q=headphones", logger=logger)
+    url = "https://www.walmart.com/search?q=headphones"
+
+    scraper = WalmartScraper(url=url, logger=logger)
     scraper.launch()
     results = scraper.scrape()
+    
     for result in results:
         print(result)

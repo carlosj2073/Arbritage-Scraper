@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS product_listings(
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	product_id INT, # NULLS are necessary for data integrity of unmatched listings
 	source_id INT NOT NULL,
-	listing TEXT,
+	listing TEXT NOT NULL,
 	brand VARCHAR (60),
 	url VARCHAR(500),
 	image JSON,
